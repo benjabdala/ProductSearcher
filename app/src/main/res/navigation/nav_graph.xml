@@ -6,6 +6,17 @@
     <fragment
         android:id="@+id/splash_fragment"
         android:name="com.benjaminabdala.productsearcher.ui.SplashFragment"
-        android:label="SplashScreen"/>
+        android:label="SplashScreen">
+
+        <action
+            android:id="@+id/navigate_to_search_input_fragment"
+            app:destination="@id/search_input_fragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/search_input_fragment"
+        android:name="com.benjaminabdala.productsearcher.ui.SearchInputFragment"
+        android:label="SearchInputScreen" />
 
 </navigation>

@@ -9,7 +9,7 @@
 
     <TextView
         android:id="@+id/splash_tv_welcome"
-        style="@style/SplashTextViewStyle"
+        style="@style/GeneralTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/splash_welcome_text"
@@ -22,7 +22,7 @@
 
     <TextView
         android:id="@+id/splash_tv_product_searcher"
-        style="@style/SplashTextViewStyle"
+        style="@style/GeneralTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"

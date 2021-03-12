@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.benjaminabdala.productsearcher.R
 import com.benjaminabdala.productsearcher.databinding.FragmentSplashBinding
 import com.benjaminabdala.productsearcher.viewmodel.SplashViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -15,13 +17,14 @@ class SplashFragment : Fragment() {
     private lateinit var binding: FragmentSplashBinding
     private val splashViewModel by viewModel<SplashViewModel>()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         binding = FragmentSplashBinding.inflate(layoutInflater)
-        return binding.root
     }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View? = binding.root
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -37,11 +40,7 @@ class SplashFragment : Fragment() {
 
     private fun navigateToSearchInputScreen(animationFinished: Boolean) {
         if (animationFinished) {
-            Toast.makeText(
-                this.context,
-                "HERE SHOULD NAVIGATE TO SEARCHINPUTSCREEN",
-                Toast.LENGTH_LONG
-            ).show()
+            findNavController().navigate(R.id.navigate_to_search_input_fragment)
         }
     }
 }
