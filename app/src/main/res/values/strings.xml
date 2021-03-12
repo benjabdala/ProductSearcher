@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">ProductSearcher</string>
+    <string name="splash_welcome_text">Welcome to</string>
+    <string name="splash_product_searcher_text">Product Searcher</string>
+    <string name="splash_logo_content_description">Logo image</string>
 </resources>

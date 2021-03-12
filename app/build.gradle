@@ -30,14 +30,22 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'com.android.support:appcompat-v7:28.0.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    def lib = rootProject.ext.generalDependencies
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation lib.legacysupport
+    implementation lib.kotlin
+    implementation lib.appcompat
+    implementation lib.corektx
+    implementation lib.constraintlayout
+    implementation lib.koinviewmodel
+    implementation lib.navigationfragment
+    implementation lib.navigation
 }
