@@ -3,6 +3,8 @@ plugins {
     id 'kotlin-android'
 }
 
+apply plugin: "androidx.navigation.safeargs.kotlin"
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
@@ -48,4 +50,8 @@ dependencies {
     implementation lib.koinviewmodel
     implementation lib.navigationfragment
     implementation lib.navigation
+    implementation lib.retrofit2
+    implementation lib.retrofitconverter
+    implementation lib.recyclerview
+    implementation lib.glide
 }

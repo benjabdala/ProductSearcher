@@ -17,6 +17,23 @@
     <fragment
         android:id="@+id/search_input_fragment"
         android:name="com.benjaminabdala.productsearcher.ui.SearchInputFragment"
-        android:label="SearchInputScreen" />
+        android:label="SearchInputScreen" >
+
+        <action
+            android:id="@+id/navigate_to_products_found_fragment"
+            app:destination="@id/products_found_fragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/products_found_fragment"
+        android:name="com.benjaminabdala.productsearcher.ui.ProductsFoundFragment"
+        android:label="ProductsFoundScreen" >
+
+        <argument
+            android:name="productInput"
+            app:argType="string" />
+
+    </fragment>
 
 </navigation>

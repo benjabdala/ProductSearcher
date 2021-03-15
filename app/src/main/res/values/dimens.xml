@@ -7,4 +7,19 @@
     <dimen name="search_input_margin_top_50">50dp</dimen>
     <dimen name="search_input_et_product_padding">10dp</dimen>
     <dimen name="search_input_et_product_text_size">18sp</dimen>
+    <dimen name="product_card_view_image_size">120dp</dimen>
+    <dimen name="product_card_view_title_text_size">18sp</dimen>
+    <dimen name="dimen_zero">0dp</dimen>
+    <dimen name="text_view_text_size_14">14sp</dimen>
+    <dimen name="products_found_view_separator_height">2dp</dimen>
+    <dimen name="products_found_recycler_view_margin_horizontal">15dp</dimen>
+    <dimen name="products_found_title_padding">10dp</dimen>
+    <dimen name="product_card_view_margin_bottom">15dp</dimen>
+    <dimen name="product_card_view_corner_radius">10dp</dimen>
+    <dimen name="product_card_view_title_padding">3dp</dimen>
+    <dimen name="product_card_view_price_text_size">16sp</dimen>
+    <dimen name="error_layout_button_back_margin_bottom">150dp</dimen>
+    <dimen name="error_layout_message_text_size">16sp</dimen>
+    <dimen name="products_found_recycler_view_margin_top">6dp</dimen>
+    <dimen name="loader_layout_tv_message_text_size">16sp</dimen>
 </resources>

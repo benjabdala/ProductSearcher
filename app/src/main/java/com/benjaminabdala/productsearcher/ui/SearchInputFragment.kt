@@ -1,12 +1,17 @@
 package com.benjaminabdala.productsearcher.ui
 
+import android.app.Activity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
+import com.benjaminabdala.productsearcher.R
 import com.benjaminabdala.productsearcher.databinding.FragmentSearchInputBinding
+import com.benjaminabdala.productsearcher.util.Constants.EMPTY_STRING
 
 class SearchInputFragment : Fragment() {
 
@@ -26,13 +31,37 @@ class SearchInputFragment : Fragment() {
         setOnClickListener()
     }
 
+    override fun onResume() {
+        super.onResume()
+        binding.searchInputEtProduct.text.clear()
+    }
+
     private fun setOnClickListener() {
-        binding.searchInputBtnSearch.setOnClickListener {
-            Toast.makeText(
-                this.context,
-                "SHOULD SHOW A LOADER AND FETCH THE PRODUCTS FROM THE API AND SHOW IT",
-                Toast.LENGTH_LONG
-            ).show()
+        with(binding) {
+            searchInputBtnSearch.setOnClickListener {
+                if (searchInputEtProduct.text.isNotBlank()) {
+                    (activity?.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager).hideSoftInputFromWindow(
+                        searchInputBtnSearch.windowToken,
+                        0
+                    )
+                    findNavController().navigate(
+                        R.id.navigate_to_products_found_fragment,
+                        Bundle().apply {
+                            putString(PRODUCT_INPUT, searchInputEtProduct.text.toString())
+                        })
+                } else {
+                    searchInputEtProduct.requestFocus()
+                    Toast.makeText(
+                        context,
+                        getString(R.string.error_empty_search_input_field),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
         }
+    }
+
+    companion object {
+        private const val PRODUCT_INPUT = "productInput"
     }
 }

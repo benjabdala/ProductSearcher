@@ -23,5 +23,21 @@
         <item name="android:background">@color/color_yellow_primary</item>
     </style>
 
+    <style name="ProductsFoundTitleStyle" parent="GeneralTextStyle">
+        <item name="android:textSize">@dimen/text_view_text_size_14</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:background">@color/color_yellow_primary</item>
+        <item name="android:padding">@dimen/products_found_title_padding</item>
+    </style>
+
+    <style name="ProductCardViewTitle" parent="GeneralTextStyle">
+        <item name="android:padding">@dimen/product_card_view_title_padding</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">@dimen/product_card_view_title_text_size</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:background">@color/color_dark_grey</item>
+    </style>
+
 </resources>
 
