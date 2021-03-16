@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
     app:startDestination="@id/splash_fragment">
 
     <fragment
         android:id="@+id/splash_fragment"
-        android:name="com.benjaminabdala.productsearcher.ui.SplashFragment"
+        android:name="com.benjaminabdala.productsearcher.ui.fragment.SplashFragment"
         android:label="SplashScreen">
 
         <action
@@ -16,7 +18,7 @@
 
     <fragment
         android:id="@+id/search_input_fragment"
-        android:name="com.benjaminabdala.productsearcher.ui.SearchInputFragment"
+        android:name="com.benjaminabdala.productsearcher.ui.fragment.SearchInputFragment"
         android:label="SearchInputScreen" >
 
         <action
@@ -27,11 +29,26 @@
 
     <fragment
         android:id="@+id/products_found_fragment"
-        android:name="com.benjaminabdala.productsearcher.ui.ProductsFoundFragment"
+        android:name="com.benjaminabdala.productsearcher.ui.fragment.ProductsFoundFragment"
         android:label="ProductsFoundScreen" >
 
         <argument
             android:name="productInput"
+            app:argType="string" />
+
+        <action
+            android:id="@+id/navigate_to_product_details_fragment"
+            app:destination="@+id/product_details_fragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/product_details_fragment"
+        android:name="com.benjaminabdala.productsearcher.ui.fragment.ProductDetailsFragment"
+        android:label="ProductDetailsScreen" >
+
+        <argument
+            android:name="permalink"
             app:argType="string" />
 
     </fragment>

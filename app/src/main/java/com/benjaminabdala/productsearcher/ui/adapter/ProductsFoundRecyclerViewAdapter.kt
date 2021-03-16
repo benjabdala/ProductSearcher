@@ -8,7 +8,11 @@ import com.benjaminabdala.productsearcher.data.entity.Product
 import com.benjaminabdala.productsearcher.databinding.ProductCardViewLayoutBinding
 import com.bumptech.glide.Glide
 
-class ProductsFoundRecyclerViewAdapter() :
+interface OnProductCardClicked {
+    fun onProductCardClicked(permalink: String)
+}
+
+class ProductsFoundRecyclerViewAdapter(private val onProductCardClicked: OnProductCardClicked) :
     RecyclerView.Adapter<ProductsFoundRecyclerViewAdapter.ProductsFoundViewHolder>() {
 
     private var productsFound: List<Product> = ArrayList()
@@ -17,7 +21,8 @@ class ProductsFoundRecyclerViewAdapter() :
         ProductsFoundViewHolder(
             ProductCardViewLayoutBinding.inflate(
                 LayoutInflater.from(parent.context)
-            )
+            ),
+            onProductCardClicked
         )
 
     override fun onBindViewHolder(holder: ProductsFoundViewHolder, position: Int) {
@@ -30,7 +35,7 @@ class ProductsFoundRecyclerViewAdapter() :
         this.productsFound = productsFound
     }
 
-    class ProductsFoundViewHolder(binding: ProductCardViewLayoutBinding) :
+    class ProductsFoundViewHolder(binding: ProductCardViewLayoutBinding, private val onProductCardClicked: OnProductCardClicked) :
         RecyclerView.ViewHolder(binding.root) {
 
         private val productCardBinding = binding
@@ -45,6 +50,9 @@ class ProductsFoundRecyclerViewAdapter() :
                 productCardViewPrice.text = productCardBinding.root.context.getString(R.string.product_card_view_price_text, product.price)
                 productCardViewFreeShipping.text = productCardBinding.root.context.getString(R.string.product_card_view_free_shipping_text, if(product.freeShipping) "Si" else "No")
                 productCardViewCityName.text = productCardBinding.root.context.getString(R.string.product_card_view_city_name_text, product.addressCityName)
+                productCardBinding.root.setOnClickListener {
+                    onProductCardClicked.onProductCardClicked(product.permalink)
+                }
             }
         }
     }

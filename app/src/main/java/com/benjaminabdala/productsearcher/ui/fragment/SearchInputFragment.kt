@@ -1,4 +1,4 @@
-package com.benjaminabdala.productsearcher.ui
+package com.benjaminabdala.productsearcher.ui.fragment
 
 import android.app.Activity
 import android.os.Bundle
@@ -11,7 +11,6 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.benjaminabdala.productsearcher.R
 import com.benjaminabdala.productsearcher.databinding.FragmentSearchInputBinding
-import com.benjaminabdala.productsearcher.util.Constants.EMPTY_STRING
 
 class SearchInputFragment : Fragment() {
 

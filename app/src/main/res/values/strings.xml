@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ProductSearcher</string>
+    <string name="app_name">Product\nSearcher</string>
 
     <!-- SplashFragment -->
     <string name="splash_welcome_text">Bienvenido a</string>
@@ -9,16 +9,22 @@
     <!-- SearchInputFragment -->
     <string name="search_input_et_hint">Ingrese un producto aqui…</string>
     <string name="search_input_btn_text">Buscar</string>
+    <string name="error_empty_search_input_field">Por favor ingrese un producto para realizar la busqueda</string>
 
     <!-- ProductsFoundFragment -->
     <string name="products_found_title_text">Productos encontrados para:\n %1$s </string>
+
+    <!-- ProductCardView -->
     <string name="product_card_view_price_text">$ %1$s</string>
     <string name="product_card_view_free_shipping_text">"Envio gratis: %1$s"</string>
     <string name="product_card_view_city_name_text">Localidad: %1$s</string>
-    <string name="error_empty_search_input_field">Por favor ingrese un producto para realizar la busqueda</string>
+    <string name="product_card_view_image_content_description">Imagen de producto</string>
+
+    <!--LoaderLayout -->
     <string name="loader_layout_tv_message_text">Cargando…</string>
+
+    <!-- ErrorLayout -->
     <string name="error_layout_message_text">Ha ocurrido un error con su busqueda,\n por favor vuelva a intentarlo…</string>
     <string name="error_layout_button_back_text">Volver</string>
     <string name="error_layout_image_content_description">Imagen de error</string>
-    <string name="product_card_view_image_content_description">Imagen de producto</string>
 </resources>

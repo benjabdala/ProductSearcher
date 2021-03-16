@@ -1,4 +1,4 @@
-package com.benjaminabdala.productsearcher.ui
+package com.benjaminabdala.productsearcher.ui.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.benjaminabdala.productsearcher.R
 import com.benjaminabdala.productsearcher.data.entity.Product
 import com.benjaminabdala.productsearcher.databinding.FragmentProductsFoundBinding
+import com.benjaminabdala.productsearcher.ui.adapter.OnProductCardClicked
 import com.benjaminabdala.productsearcher.ui.adapter.ProductsFoundRecyclerViewAdapter
 import com.benjaminabdala.productsearcher.util.Data
 import com.benjaminabdala.productsearcher.util.Event
@@ -19,7 +20,7 @@ import com.benjaminabdala.productsearcher.util.Status
 import com.benjaminabdala.productsearcher.viewmodel.ProductsFoundViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class ProductsFoundFragment : Fragment() {
+class ProductsFoundFragment : Fragment(), OnProductCardClicked {
 
     private lateinit var binding: FragmentProductsFoundBinding
     private val productsFoundViewModel by viewModel<ProductsFoundViewModel>()
@@ -75,7 +76,7 @@ class ProductsFoundFragment : Fragment() {
         binding.productsFoundContent.isVisible = true
         binding.productsFoundTvTitle.text =
             getString(R.string.products_found_title_text, args.productInput)
-        val productsFoundAdapter = ProductsFoundRecyclerViewAdapter()
+        val productsFoundAdapter = ProductsFoundRecyclerViewAdapter(this)
         productsFoundAdapter.submitProductsFound(productsFound)
         binding.productsFoundRecyclerView.apply {
             layoutManager = LinearLayoutManager(this.context)
@@ -86,5 +87,15 @@ class ProductsFoundFragment : Fragment() {
     private fun showError() {
         setLoaderVisible(false)
         binding.productsFoundError.root.isVisible = true
+    }
+
+    override fun onProductCardClicked(permalink: String) {
+        findNavController().navigate(R.id.navigate_to_product_details_fragment, Bundle().apply {
+            putString(PERMALINK, permalink)
+        })
+    }
+
+    companion object {
+        private const val PERMALINK = "permalink"
     }
 }
