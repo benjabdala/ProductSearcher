@@ -25,6 +25,10 @@
             android:id="@+id/navigate_to_products_found_fragment"
             app:destination="@id/products_found_fragment" />
 
+        <action
+            android:id="@+id/navigate_to_product_details_fragment"
+            app:destination="@+id/product_details_fragment" />
+
     </fragment>
 
     <fragment

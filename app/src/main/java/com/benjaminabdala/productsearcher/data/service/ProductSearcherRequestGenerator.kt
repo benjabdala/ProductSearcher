@@ -1,4 +1,4 @@
-package com.benjaminabdala.productsearcher.data
+package com.benjaminabdala.productsearcher.data.service
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit

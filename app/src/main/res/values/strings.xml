@@ -10,6 +10,8 @@
     <string name="search_input_et_hint">Ingrese un producto aqui…</string>
     <string name="search_input_btn_text">Buscar</string>
     <string name="error_empty_search_input_field">Por favor ingrese un producto para realizar la busqueda</string>
+    <string name="search_input_tv_history_text">Historial</string>
+    <string name="search_input_tv_empty_history_text">Ningún producto seleccionado aun…</string>
 
     <!-- ProductsFoundFragment -->
     <string name="products_found_title_text">Productos encontrados para:\n %1$s </string>

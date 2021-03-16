@@ -1,6 +1,7 @@
 package com.benjaminabdala.productsearcher
 
 import android.app.Application
+import com.benjaminabdala.productsearcher.di.databaseModule
 import com.benjaminabdala.productsearcher.di.serviceModule
 import com.benjaminabdala.productsearcher.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
@@ -12,7 +13,7 @@ class ProductSearcherApplication: Application() {
         super.onCreate()
         startKoin {
             androidContext(this@ProductSearcherApplication)
-            modules(viewModelModule, serviceModule)
+            modules(viewModelModule, serviceModule, databaseModule)
         }
     }
 }

@@ -4,6 +4,7 @@ plugins {
 }
 
 apply plugin: "androidx.navigation.safeargs.kotlin"
+apply plugin: "kotlin-kapt"
 
 android {
     compileSdkVersion 30
@@ -54,4 +55,7 @@ dependencies {
     implementation lib.retrofitconverter
     implementation lib.recyclerview
     implementation lib.glide
+    implementation lib.roomruntime
+    implementation lib.roomktx
+    kapt lib.roomcompiler
 }

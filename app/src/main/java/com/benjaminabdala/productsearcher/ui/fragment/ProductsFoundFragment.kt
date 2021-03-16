@@ -14,6 +14,7 @@ import com.benjaminabdala.productsearcher.data.entity.Product
 import com.benjaminabdala.productsearcher.databinding.FragmentProductsFoundBinding
 import com.benjaminabdala.productsearcher.ui.adapter.OnProductCardClicked
 import com.benjaminabdala.productsearcher.ui.adapter.ProductsFoundRecyclerViewAdapter
+import com.benjaminabdala.productsearcher.util.Constants.PERMALINK
 import com.benjaminabdala.productsearcher.util.Data
 import com.benjaminabdala.productsearcher.util.Event
 import com.benjaminabdala.productsearcher.util.Status
@@ -78,7 +79,7 @@ class ProductsFoundFragment : Fragment(), OnProductCardClicked {
             getString(R.string.products_found_title_text, args.productInput)
         val productsFoundAdapter = ProductsFoundRecyclerViewAdapter(this)
         productsFoundAdapter.submitProductsFound(productsFound)
-        binding.productsFoundRecyclerView.apply {
+        binding.productsFoundRecyclerView.root.apply {
             layoutManager = LinearLayoutManager(this.context)
             adapter = productsFoundAdapter
         }
@@ -89,13 +90,10 @@ class ProductsFoundFragment : Fragment(), OnProductCardClicked {
         binding.productsFoundError.root.isVisible = true
     }
 
-    override fun onProductCardClicked(permalink: String) {
+    override fun onProductCardClicked(productClicked: Product) {
+        productsFoundViewModel.addProductToDatabase(productClicked)
         findNavController().navigate(R.id.navigate_to_product_details_fragment, Bundle().apply {
-            putString(PERMALINK, permalink)
+            putString(PERMALINK, productClicked.permalink)
         })
-    }
-
-    companion object {
-        private const val PERMALINK = "permalink"
     }
 }

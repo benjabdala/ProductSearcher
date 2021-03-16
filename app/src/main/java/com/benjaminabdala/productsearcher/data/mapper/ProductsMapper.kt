@@ -1,7 +1,7 @@
 package com.benjaminabdala.productsearcher.data.mapper
 
 import com.benjaminabdala.productsearcher.data.entity.Product
-import com.benjaminabdala.productsearcher.data.response.ProductResponse
+import com.benjaminabdala.productsearcher.data.service.response.ProductResponse
 
 class ProductsMapper {
 

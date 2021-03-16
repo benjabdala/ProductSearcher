@@ -3,6 +3,7 @@ package com.benjaminabdala.productsearcher.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.benjaminabdala.productsearcher.data.database.ProductSearcherDatabase
 import com.benjaminabdala.productsearcher.data.entity.Product
 import com.benjaminabdala.productsearcher.data.service.SearchProductService
 import com.benjaminabdala.productsearcher.util.Data
@@ -13,7 +14,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class ProductsFoundViewModel(private val searchProductService: SearchProductService) : ViewModel() {
+class ProductsFoundViewModel(
+    private val searchProductService: SearchProductService,
+    private val productSearcherDatabase: ProductSearcherDatabase
+) : ViewModel() {
 
     var productsFoundLiveData = MutableLiveData<Event<Data<List<Product>>>>()
 
@@ -34,5 +38,9 @@ class ProductsFoundViewModel(private val searchProductService: SearchProductServ
                 }
             }
         }
+    }
+
+    fun addProductToDatabase(productClicked: Product) = viewModelScope.launch {
+        withContext(Dispatchers.Default) { productSearcherDatabase.addProduct(productClicked) }
     }
 }

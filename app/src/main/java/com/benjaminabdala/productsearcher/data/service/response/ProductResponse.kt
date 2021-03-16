@@ -1,4 +1,4 @@
-package com.benjaminabdala.productsearcher.data.response
+package com.benjaminabdala.productsearcher.data.service.response
 
 class ProductResponse (
     val title: String,

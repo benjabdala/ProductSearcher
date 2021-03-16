@@ -9,7 +9,7 @@ import com.benjaminabdala.productsearcher.databinding.ProductCardViewLayoutBindi
 import com.bumptech.glide.Glide
 
 interface OnProductCardClicked {
-    fun onProductCardClicked(permalink: String)
+    fun onProductCardClicked(productClicked: Product)
 }
 
 class ProductsFoundRecyclerViewAdapter(private val onProductCardClicked: OnProductCardClicked) :
@@ -51,7 +51,7 @@ class ProductsFoundRecyclerViewAdapter(private val onProductCardClicked: OnProdu
                 productCardViewFreeShipping.text = productCardBinding.root.context.getString(R.string.product_card_view_free_shipping_text, if(product.freeShipping) "Si" else "No")
                 productCardViewCityName.text = productCardBinding.root.context.getString(R.string.product_card_view_city_name_text, product.addressCityName)
                 productCardBinding.root.setOnClickListener {
-                    onProductCardClicked.onProductCardClicked(product.permalink)
+                    onProductCardClicked.onProductCardClicked(product)
                 }
             }
         }

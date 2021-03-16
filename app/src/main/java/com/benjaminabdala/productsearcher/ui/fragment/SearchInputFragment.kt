@@ -8,13 +8,22 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.benjaminabdala.productsearcher.R
+import com.benjaminabdala.productsearcher.data.entity.Product
 import com.benjaminabdala.productsearcher.databinding.FragmentSearchInputBinding
+import com.benjaminabdala.productsearcher.ui.adapter.OnProductCardClicked
+import com.benjaminabdala.productsearcher.ui.adapter.ProductsFoundRecyclerViewAdapter
+import com.benjaminabdala.productsearcher.util.Constants.PERMALINK
+import com.benjaminabdala.productsearcher.viewmodel.HistoryOfProductsViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SearchInputFragment : Fragment() {
+class SearchInputFragment : Fragment(), OnProductCardClicked {
 
     private lateinit var binding: FragmentSearchInputBinding
+    private val historyOfProductsViewModel by viewModel<HistoryOfProductsViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,11 +37,29 @@ class SearchInputFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setOnClickListener()
+        historyOfProductsViewModel.historyOfProductsLiveData.observe(::getLifecycle, ::showHistoryOfProductsClicked)
+        historyOfProductsViewModel.getHistoryOfProductsFromDatabase()
     }
 
     override fun onResume() {
         super.onResume()
         binding.searchInputEtProduct.text.clear()
+    }
+
+    private fun showHistoryOfProductsClicked(historyOfProducts: List<Product>?) {
+        historyOfProducts?.let { listOfProducts ->
+            val historyAdapter = ProductsFoundRecyclerViewAdapter(this)
+            historyAdapter.submitProductsFound(listOfProducts)
+            binding.searchInputRvHistory.root.apply {
+                isVisible = true
+                layoutManager = LinearLayoutManager(this.context)
+                adapter = historyAdapter
+            }
+        } ?: showEmptyHistory()
+    }
+
+    private fun showEmptyHistory() {
+        binding.searchInputTvEmptyHistory.isVisible = true
     }
 
     private fun setOnClickListener() {
@@ -62,5 +89,11 @@ class SearchInputFragment : Fragment() {
 
     companion object {
         private const val PRODUCT_INPUT = "productInput"
+    }
+
+    override fun onProductCardClicked(productClicked: Product) {
+        findNavController().navigate(R.id.navigate_to_product_details_fragment, Bundle().apply {
+            putString(PERMALINK, productClicked.permalink)
+        })
     }
 }

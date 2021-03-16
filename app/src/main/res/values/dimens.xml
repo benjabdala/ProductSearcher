@@ -20,6 +20,10 @@
     <dimen name="product_card_view_price_text_size">16sp</dimen>
     <dimen name="error_layout_button_back_margin_bottom">150dp</dimen>
     <dimen name="error_layout_message_text_size">16sp</dimen>
-    <dimen name="products_found_recycler_view_margin_top">6dp</dimen>
+    <dimen name="products_found_recycler_view_margin_top">20dp</dimen>
     <dimen name="loader_layout_tv_message_text_size">16sp</dimen>
+    <dimen name="search_input_tv_history_margin_top">50dp</dimen>
+    <dimen name="search_input_tv_history_text_size">22sp</dimen>
+    <dimen name="search_input_rv_history_margin_top">10dp</dimen>
+    <dimen name="search_input_tv_history_padding">10dp</dimen>
 </resources>

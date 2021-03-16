@@ -1,7 +1,5 @@
 package com.benjaminabdala.productsearcher.data.service
 
-import com.benjaminabdala.productsearcher.data.ProductSearcherAPI
-import com.benjaminabdala.productsearcher.data.ProductSearcherRequestGenerator
 import com.benjaminabdala.productsearcher.data.entity.Product
 import com.benjaminabdala.productsearcher.data.mapper.ProductsMapper
 import com.benjaminabdala.productsearcher.util.Constants.ERROR

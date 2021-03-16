@@ -11,6 +11,7 @@ ext {
     retrofit2_converter = "2.6.2"
     recyclerview = "1.1.0"
     glide = "4.11.0"
+    room = "2.2.5"
 
     generalDependencies = [
             kotlin              : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${kotlin}",
@@ -25,6 +26,9 @@ ext {
             retrofit2           : "com.squareup.retrofit2:retrofit:${retrofit2}",
             retrofitconverter   : "com.squareup.retrofit2:converter-gson:${retrofit2_converter}",
             recyclerview        : "androidx.recyclerview:recyclerview:${recyclerview}",
-            glide               : "com.github.bumptech.glide:glide:${glide}"
+            glide               : "com.github.bumptech.glide:glide:${glide}",
+            roomruntime         : "androidx.room:room-runtime:${room}",
+            roomktx             : "androidx.room:room-ktx:${room}",
+            roomcompiler        : "androidx.room:room-compiler:${room}"
     ]
 }

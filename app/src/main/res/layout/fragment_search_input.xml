@@ -22,4 +22,41 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/search_input_et_product" />
 
+    <TextView
+        android:id="@+id/search_input_tv_history"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/search_input_tv_history_padding"
+        android:layout_marginTop="@dimen/search_input_tv_history_margin_top"
+        android:text="@string/search_input_tv_history_text"
+        android:background="@color/color_dark_grey"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/search_input_tv_history_text_size"
+        app:layout_constraintBottom_toTopOf="@+id/search_input_rv_history"
+        app:layout_constraintTop_toBottomOf="@id/search_input_btn_search" />
+
+    <include
+        android:id="@+id/search_input_rv_history"
+        layout="@layout/products_recycler_view_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_zero"
+        android:visibility="invisible"
+        android:layout_marginTop="@dimen/search_input_rv_history_margin_top"
+        android:layout_marginStart="@dimen/products_found_recycler_view_margin_horizontal"
+        android:layout_marginEnd="@dimen/products_found_recycler_view_margin_horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/search_input_tv_history" />
+
+    <TextView
+        android:id="@+id/search_input_tv_empty_history"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_zero"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:text="@string/search_input_tv_empty_history_text"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/search_input_tv_history"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
